@@ -1,127 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>7R1X7R41L — Security Researcher Portfolio</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; color:#111; }
-    header { background:#fff; padding:20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-    nav a { margin-left:15px; text-decoration:none; color:#333; font-weight:bold; }
-    main { max-width:1000px; margin:20px auto; padding:0 20px; }
-    section { background:#fff; padding:20px; margin-bottom:20px; border-radius:12px; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
-    h1,h2,h3,h4 { margin:0; }
-    .repo { border:1px solid #ddd; padding:10px; border-radius:8px; margin-bottom:10px; background:#fafafa; }
-    .repo h4 { display:flex; justify-content:space-between; }
-    .filters input, .filters select { padding:5px 10px; margin-right:10px; border-radius:6px; border:1px solid #ccc; }
-    footer { text-align:center; padding:20px; color:#777; }
-    button { cursor:pointer; padding:5px 10px; border:none; border-radius:6px; background:#eee; }
-    button:hover { background:#ddd; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7R1X7R41L</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Base styles */
+  * { box-sizing: border-box; margin:0; padding:0; font-family: 'Inter', sans-serif; }
+  body { background:#f0f2f5; color:#1a1a1a; line-height:1.6; }
+  a { color:#2563eb; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  /* Header */
+  header { background:#fff; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 10px rgba(0,0,0,0.05); position:sticky; top:0; z-index:10; }
+  nav a { margin-left:20px; font-weight:600; }
+
+  main { max-width:1100px; margin:40px auto; padding:0 20px; }
+
+  section { background:#fff; padding:30px; margin-bottom:30px; border-radius:16px; box-shadow:0 4px 15px rgba(0,0,0,0.05); }
+
+  /* Hero */
+  #hero h2 { font-size:2.2rem; font-weight:700; margin-bottom:10px; }
+  #hero p { color:#555; margin-bottom:15px; }
+  #hero a { display:inline-block; margin-top:10px; padding:8px 16px; background:#2563eb; color:#fff; border-radius:8px; transition:0.2s; }
+  #hero a:hover { background:#1e40af; }
+
+  /* Filters */
+  .filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
+  .filters input, .filters select { padding:8px 12px; border-radius:8px; border:1px solid #ccc; flex:1; min-width:120px; }
+
+  /* Repo cards */
+  #repo-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+  .repo { background:#fafafa; padding:20px; border-radius:12px; border:1px solid #e2e8f0; transition:transform 0.2s, box-shadow 0.2s; }
+  .repo:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+  .repo h4 { font-size:1.1rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
+  .repo p { font-size:0.95rem; color:#555; margin-bottom:8px; }
+  .repo .meta { font-size:0.85rem; color:#777; display:flex; justify-content:space-between; }
+
+  /* About section */
+  #about p { color:#555; }
+
+  /* Contact form */
+  #contact form { display:grid; gap:15px; }
+  #contact input, #contact textarea { padding:10px; border-radius:8px; border:1px solid #ccc; width:100%; }
+  #contact button { padding:10px 20px; border:none; border-radius:8px; background:#2563eb; color:#fff; font-weight:600; cursor:pointer; transition:0.2s; }
+  #contact button:hover { background:#1e40af; }
+
+  footer { text-align:center; padding:20px; color:#777; }
+
+  @media(max-width:600px){
+    header { flex-direction:column; gap:10px; }
+    .filters { flex-direction:column; }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>7R1X7R41L — Security Researcher Portfolio</h1>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-  <main>
-    <section>
-      <h2>Hi — I’m 7R1X7R41L</h2>
-      <p>I’m a security researcher focused on web application security, bug bounty research, and practical exploit development. This portfolio showcases my tools, write-ups, and code.</p>
-      <p><a href="https://github.com/7R1X7R41L" target="_blank">GitHub Profile</a></p>
-    </section>
+<header>
+  <h1>7R1X7R41L</h1>
+  <nav>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <section id="projects">
-      <h3>Projects</h3>
-      <div class="filters">
-        <input type="text" id="search" placeholder="Search repos">
-        <select id="language">
-          <option value="All">All</option>
-        </select>
-        <select id="sort">
-          <option value="updated">Recently updated</option>
-          <option value="stars">Most stars</option>
-        </select>
+<main>
+  <section id="hero">
+    <h2>Hi — I’m Prince Chakma</h2>
+    <p>I’m a security researcher focused on web application security, bug bounty research,This portfolio showcases my tools, write-ups, and code.</p>
+    <a href="https://github.com/7R1X7R41L" target="_blank">View GitHub Profile</a>
+  </section>
+
+  <section id="projects">
+    <h3>Projects</h3>
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search repos">
+      <select id="language">
+        <option value="All">All Languages</option>
+      </select>
+      <select id="sort">
+        <option value="updated">Recently Updated</option>
+        <option value="stars">Most Stars</option>
+      </select>
+    </div>
+    <div id="repo-list"></div>
+  </section>
+
+  <section id="about">
+    <h3>About</h3>
+    <p>I perform authorized security testing, write public advisories, and expert in  recon and automation tools. My focus areas are Web App Security, Reconnaissance, and Red Teaming.</p>
+  </section>
+
+  <section id="contact">
+    <h3>Contact</h3>
+    <form action="https://formspree.io/f/your-id" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" placeholder="Message" rows="5" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</main>
+
+<footer>© 2025 7R1X7R41L</footer>
+
+<script>
+const repoListEl = document.getElementById('repo-list');
+const searchEl = document.getElementById('search');
+const languageEl = document.getElementById('language');
+const sortEl = document.getElementById('sort');
+
+let repos = [];
+
+async function fetchRepos() {
+  try {
+    const res = await fetch('https://api.github.com/users/7R1X7R41L/repos?per_page=100');
+    repos = await res.json();
+    populateLanguages();
+    renderRepos();
+  } catch(e) {
+    repoListEl.innerHTML = '<p>Error loading repos</p>';
+  }
+}
+
+function populateLanguages() {
+  const langs = new Set();
+  repos.forEach(r => { if(r.language) langs.add(r.language); });
+  langs.forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l;
+    opt.textContent = l;
+    languageEl.appendChild(opt);
+  });
+}
+
+function renderRepos() {
+  let filtered = repos.slice();
+  const q = searchEl.value.toLowerCase();
+  if(q) filtered = filtered.filter(r => (r.name + (r.description||'')).toLowerCase().includes(q));
+  const lang = languageEl.value;
+  if(lang !== 'All') filtered = filtered.filter(r => r.language === lang);
+  const sortBy = sortEl.value;
+  if(sortBy === 'stars') filtered.sort((a,b) => b.stargazers_count - a.stargazers_count);
+  else filtered.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+  repoListEl.innerHTML = '';
+  if(filtered.length === 0) { repoListEl.innerHTML = '<p>No repos found</p>'; return; }
+  filtered.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'repo';
+    div.innerHTML = `
+      <h4><a href="${r.html_url}" target="_blank">${r.name}</a> ★ ${r.stargazers_count}</h4>
+      <p>${r.description||'No description'}</p>
+      <div class="meta">
+        <span>${r.language||'—'}</span>
+        <span>Updated: ${new Date(r.updated_at).toLocaleDateString()}</span>
       </div>
-      <div id="repo-list"></div>
-    </section>
+    `;
+    repoListEl.appendChild(div);
+  });
+}
 
-    <section id="about">
-      <h3>About</h3>
-      <p>I perform authorized security testing, write public advisories, and develop custom recon and automation tools. My focus areas are Web App Security, Reconnaissance, and Red Teaming.</p>
-    </section>
+searchEl.addEventListener('input', renderRepos);
+languageEl.addEventListener('change', renderRepos);
+sortEl.addEventListener('change', renderRepos);
 
-    <section id="contact">
-      <h3>Contact</h3>
-      <form action="https://formspree.io/f/your-id" method="POST">
-        <input type="text" name="name" placeholder="Your name" required><br><br>
-        <input type="email" name="email" placeholder="Email" required><br><br>
-        <textarea name="message" placeholder="Message" rows="5" required></textarea><br><br>
-        <button type="submit">Send</button>
-      </form>
-    </section>
-  </main>
-  <footer>© 2025 7R1X7R41L</footer>
-
-  <script>
-    const repoListEl = document.getElementById('repo-list');
-    const searchEl = document.getElementById('search');
-    const languageEl = document.getElementById('language');
-    const sortEl = document.getElementById('sort');
-
-    let repos = [];
-
-    async function fetchRepos() {
-      try {
-        const res = await fetch('https://api.github.com/users/7R1X7R41L/repos?per_page=100');
-        repos = await res.json();
-        populateLanguages();
-        renderRepos();
-      } catch(e) {
-        repoListEl.innerHTML = 'Error loading repos';
-      }
-    }
-
-    function populateLanguages() {
-      const langs = new Set();
-      repos.forEach(r => { if(r.language) langs.add(r.language); });
-      langs.forEach(l => {
-        const opt = document.createElement('option');
-        opt.value = l;
-        opt.textContent = l;
-        languageEl.appendChild(opt);
-      });
-    }
-
-    function renderRepos() {
-      let filtered = repos.slice();
-      const q = searchEl.value.toLowerCase();
-      if(q) filtered = filtered.filter(r => (r.name + (r.description||'')).toLowerCase().includes(q));
-      const lang = languageEl.value;
-      if(lang !== 'All') filtered = filtered.filter(r => r.language === lang);
-      const sortBy = sortEl.value;
-      if(sortBy === 'stars') filtered.sort((a,b) => b.stargazers_count - a.stargazers_count);
-      else filtered.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
-
-      repoListEl.innerHTML = '';
-      if(filtered.length === 0) { repoListEl.innerHTML = 'No repos found'; return; }
-      filtered.forEach(r => {
-        const div = document.createElement('div');
-        div.className = 'repo';
-        div.innerHTML = `<h4><a href="${r.html_url}" target="_blank">${r.name}</a> ★ ${r.stargazers_count}</h4><p>${r.description||'No description'}</p><p>${r.language||'—'} | Updated: ${new Date(r.updated_at).toLocaleDateString()}</p>`;
-        repoListEl.appendChild(div);
-      });
-    }
-
-    searchEl.addEventListener('input', renderRepos);
-    languageEl.addEventListener('change', renderRepos);
-    sortEl.addEventListener('change', renderRepos);
-
-    fetchRepos();
-  </script>
+fetchRepos();
+</script>
 </body>
 </html>
