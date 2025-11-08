@@ -1,138 +1,928 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7R1X7R41L</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; margin:0; padding:0; font-family: 'Inter', sans-serif; }
-  body { overflow-x:hidden; color:#fff; line-height:1.6; position:relative; scroll-behavior: smooth; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7R1X7R41L - Security Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Inter', sans-serif; 
+        }
+        
+        body { 
+            overflow-x: hidden; 
+            color: #fff; 
+            line-height: 1.6; 
+            position: relative; 
+            scroll-behavior: smooth; 
+            background: #0a0a0a;
+            min-height: 100vh;
+        }
 
-  /* Animated gradient background */
-  body::before {
-    content:"";
-    position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2;
-    background: linear-gradient(45deg, #1e3c72, #2a5298, #ff7f50, #ffd700);
-    background-size: 400% 400%; animation: gradientBG 15s ease infinite;
-  }
-  @keyframes gradientBG { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        }
 
-  #particles { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-  header { background: rgba(0,0,0,0.6); padding:20px 40px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; border-bottom:2px solid #ffd700; border-radius:0 0 12px 12px; }
-  nav a { margin-left:20px; font-weight:600; color:#fff; transition: color 0.3s; } nav a:hover { color:#ff7f50; }
+        header { 
+            background: rgba(10, 10, 10, 0.95); 
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 157, 0.3);
+            backdrop-filter: blur(10px);
+        }
 
-  main { max-width:1100px; margin:40px auto; padding:0 20px; }
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            background: linear-gradient(90deg, #00ff9d, #00b8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-  section { background: rgba(0,0,0,0.4); padding:30px; margin-bottom:30px; border-radius:16px; backdrop-filter: blur(10px); box-shadow:0 8px 25px rgba(0,0,0,0.5); transition: transform 0.6s, background 0.6s, opacity 1s; opacity:0; transform:translateY(50px); }
-  section.visible { opacity:1; transform:translateY(0); }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #00ff9d;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
 
-  #hero h2 { font-size:2.5rem; font-weight:700; margin-bottom:10px; background: linear-gradient(90deg,#ffd700,#ff7f50); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:hueRotate 5s linear infinite; }
-  @keyframes hueRotate { 0%{filter:hue-rotate(0deg);} 100%{filter:hue-rotate(360deg);} }
-  #hero p { color:#f0f0f0; margin-bottom:15px; font-size:1.1rem; }
-  #hero a { display:inline-block; margin-top:10px; padding:12px 24px; background:#ff7f50; color:#fff; border-radius:12px; font-weight:600; box-shadow:0 0 20px #ff7f50,0 0 40px #ffd700; transition: all 0.3s; } 
-  #hero a:hover { background:#ffd700; color:#000; box-shadow:0 0 30px #ffd700,0 0 60px #ff7f50; transform:scale(1.05); }
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
 
-  .filters { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
-  .filters input, .filters select { padding:10px 12px; border-radius:12px; border:1px solid #ffd700; flex:1; min-width:120px; background: rgba(255,255,255,0.1); color:#fff; }
-  .filters input::placeholder { color:#ddd; }
+        nav a { 
+            color: #fff; 
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
 
-  #repo-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-  .repo { background: rgba(0,0,0,0.5); padding:20px; border-radius:16px; border:1px solid #ffd700; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; cursor:pointer; box-shadow:0 0 10px #ffd700; }
-  .repo:hover { transform: translateY(-8px); box-shadow:0 0 20px #ff7f50,0 0 40px #ffd700; background: rgba(0,0,0,0.7); }
-  .repo h4 { font-size:1.2rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; color:#ffd700; }
-  .repo h4 a { color:#fff; transition: color 0.3s; } .repo h4 a:hover { color:#ff7f50; }
-  .repo p { font-size:0.95rem; color:#eee; margin-bottom:8px; }
-  .repo .meta { font-size:0.85rem; color:#ccc; display:flex; justify-content:space-between; }
+        nav a:hover { 
+            color: #00ff9d; 
+            background: rgba(0, 255, 157, 0.1);
+        }
 
-  #about p { color:#eee; font-size:1.05rem; }
+        main {
+            margin-top: 80px;
+            width: 100%;
+        }
 
-  #contact form { display:grid; gap:15px; }
-  #contact input, #contact textarea { padding:12px; border-radius:12px; border:1px solid #ffd700; width:100%; background: rgba(255,255,255,0.1); color:#fff; }
-  #contact input::placeholder, #contact textarea::placeholder { color:#ddd; }
-  #contact button { padding:12px 24px; border:none; border-radius:12px; background:#ff7f50; color:#fff; font-weight:600; cursor:pointer; transition: all 0.3s; box-shadow:0 0 20px #ff7f50,0 0 40px #ffd700; }
-  #contact button:hover { background:#ffd700; color:#000; box-shadow:0 0 30px #ffd700,0 0 60px #ff7f50; transform: scale(1.05); }
+        section {
+            background: rgba(15, 20, 35, 0.6);
+            padding: 30px 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            width: 100%;
+        }
 
-  footer { text-align:center; padding:20px; color:#ccc; border-top:1px solid rgba(255,255,255,0.2); }
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #00ff9d;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-  /* Modal Styles */
-  #modal { position:fixed; top:0; left:0; width:100%; height:100%; display:none; justify-content:center; align-items:center; background: rgba(0,0,0,0.85); z-index:20; }
-  #modal .content { background: rgba(0,0,0,0.9); padding:30px; border-radius:16px; max-width:600px; width:90%; position:relative; }
-  #modal h3 { color:#ffd700; margin-bottom:10px; }
-  #modal p { color:#eee; margin-bottom:10px; }
-  #modal .meta { font-size:0.9rem; color:#ccc; margin-bottom:10px; display:flex; justify-content:space-between; }
-  #modal .close { position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#fff; }
-  #modal a { color:#ff7f50; text-decoration:underline; }
+        /* Hero Section */
+        #hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0, 255, 157, 0.1), rgba(0, 100, 255, 0.1));
+        }
 
-  @media(max-width:600px){ header { flex-direction:column; gap:10px; } .filters { flex-direction:column; } }
-</style>
+        .cyber-badge {
+            display: inline-block;
+            background: rgba(0, 255, 157, 0.1);
+            color: #00ff9d;
+            padding: 8px 16px;
+            border: 1px solid #00ff9d;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        #hero h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00ff9d, #00b8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00ff9d, #00b8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-card span:last-child {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 250px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00ff9d, #00b8ff);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00ff9d;
+            border-color: #00ff9d;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.4);
+        }
+
+        /* About Me Section */
+        #about {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .about-text {
+            line-height: 1.7;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 3px solid #00ff9d;
+            background: linear-gradient(45deg, #00ff9d, #00b8ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #0a0a0a;
+        }
+
+        .highlight {
+            color: #00ff9d;
+            font-weight: 600;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #00ff9d;
+        }
+
+        .skill-category h4 {
+            color: #00ff9d;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 6px 0;
+            color: #e0e0e0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Section */
+        .filters {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filters input, .filters select {
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 2px solid #00ff9d;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        #repo-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .repo {
+            background: rgba(0, 255, 157, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .repo:hover {
+            transform: translateY(-3px);
+            border-color: #00ff9d;
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.2);
+        }
+
+        .repo h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #00ff9d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .repo p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .repo .meta {
+            font-size: 0.8rem;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Achievements */
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+        }
+
+        .achievement-card i {
+            font-size: 1.8rem;
+            color: #00ff9d;
+            margin-bottom: 10px;
+        }
+
+        .achievement-card h4 {
+            color: #fff;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .achievement-card p {
+            color: #bbb;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Form */
+        #contact form {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        #contact input, #contact textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #00ff9d;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        #contact textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        #contact button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #00ff9d, #00b8ff);
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #ccc;
+            border-top: 1px solid rgba(0, 255, 157, 0.3);
+            background: rgba(10, 10, 10, 0.8);
+            margin-top: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: #00ff9d;
+            transform: translateY(-2px);
+            background: rgba(0, 255, 157, 0.2);
+        }
+
+        /* Modal */
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        #modal .content {
+            background: rgba(15, 20, 35, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            border: 2px solid #00ff9d;
+        }
+
+        #modal .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 25px;
+            }
+
+            header {
+                padding: 15px 25px;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                font-size: 0.95rem;
+                padding: 10px 18px;
+            }
+
+            #hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                width: auto;
+                min-width: 180px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filters {
+                flex-direction: row;
+            }
+
+            #repo-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .achievements {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 40px;
+            }
+
+            header {
+                padding: 20px 40px;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 50px 40px;
+                margin-bottom: 30px;
+            }
+
+            #hero {
+                padding: 80px 40px;
+            }
+
+            #hero h2 {
+                font-size: 3rem;
+            }
+
+            .stats-container {
+                gap: 30px;
+            }
+
+            .stat-card {
+                padding: 30px 20px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            #repo-list {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            .repo {
+                padding: 25px;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 767px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid rgba(0, 255, 157, 0.3);
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Very Small Phones */
+        @media (max-width: 360px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            header {
+                padding: 12px 15px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            section {
+                padding: 25px 15px;
+            }
+
+            #hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .achievements {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<canvas id="particles"></canvas>
+<div class="container">
+    <header>
+        <div class="logo">7R1X7R41L</div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <a href="#hero"><i class="fas fa-home"></i> Home</a>
+            <a href="#about"><i class="fas fa-user"></i> About</a>
+            <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
+            <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+            <a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
 
-<header>
-  <h1>7R1X7R41L</h1>
-  <nav>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <main>
+        <section id="hero">
+            <div class="cyber-badge">Security Researcher</div>
+            <h2>Prince Chakma</h2>
+            <p class="tagline">Identifying vulnerabilities • Building security tools • Protecting digital assets</p>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <span class="stat-number" data-count="50">0</span>
+                    <span>Vulnerabilities</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="25">0</span>
+                    <span>Projects</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="3">0</span>
+                    <span>Years Exp</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="100">0</span>
+                    <span>Reports</span>
+                </div>
+            </div>
 
-<main>
-  <section id="hero">
-    <h2>Hi — I’m Prince Chakma</h2>
-    <p>I’m a security researcher focused on web app security, bug bounty research, and this portfolio showcases my tools, write-ups, and code.</p>
-    <a href="https://github.com/7R1X7R41L" target="_blank">View GitHub Profile</a>
-  </section>
+            <div class="hero-buttons">
+                <a href="https://github.com/7R1X7R41L" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/prince-chakma" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-shield-alt"></i> Contact
+                </a>
+            </div>
+        </section>
 
-  <section id="projects">
-    <h3>Projects</h3>
-    <div class="filters">
-      <input type="text" id="search" placeholder="Search repos">
-      <select id="language"><option value="All">All Languages</option></select>
-      <select id="sort"><option value="updated">Recently Updated</option><option value="stars">Most Stars</option></select>
-    </div>
-    <div id="repo-list"></div>
-  </section>
+        <section id="about">
+            <h3><i class="fas fa-user"></i> About Me</h3>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm <span class="highlight">Prince Chakma</span>, a passionate security researcher with over <span class="highlight">3 years of experience</span> in cybersecurity. My journey began with curiosity about how systems work and how they can be secured against threats.</p>
+                    
+                    <p>I specialize in <span class="highlight">web application security</span>, vulnerability assessment, and penetration testing. I've discovered and responsibly disclosed <span class="highlight">50+ vulnerabilities</span> across various platforms, helping organizations strengthen their security posture.</p>
+                    
+                    <p>My expertise includes working with the <span class="highlight">OWASP Top 10</span>, conducting security research, developing custom security tools, and participating in bug bounty programs. I believe in continuous learning and sharing knowledge with the cybersecurity community.</p>
+                    
+                    <p>When I'm not hunting for bugs, I contribute to <span class="highlight">open-source security projects</span> and write about my findings to help others in the field. My goal is to make the digital world a safer place, one vulnerability at a time.</p>
+                </div>
+                <div class="profile-img">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+            </div>
+        </section>
 
-  <section id="about">
-    <h3>About</h3>
-    <p>I perform authorized security testing, write public advisories, and am an expert in recon and automation tools. Focus areas: Web App Security, Reconnaissance, Red Teaming.</p>
-  </section>
+        <section id="skills">
+            <h3><i class="fas fa-tools"></i> Technical Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Web Security</h4>
+                    <ul class="skill-list">
+                        <li>OWASP Top 10</li>
+                        <li>Subdomain Takeover</li>
+                        <li>XSS & SQL Injection</li>
+                        <li>API Security</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools</h4>
+                    <ul class="skill-list">
+                        <li>Burp Suite</li>
+                        <li>Nmap</li>
+                        <li>Metasploit</li>
+                        <li>Python & Bash</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Methodologies</h4>
+                    <ul class="skill-list">
+                        <li>Penetration Testing</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Threat Modeling</li>
+                        <li>Bug Bounty Hunting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-  <section id="contact">
-    <h3>Contact</h3>
-    <form action="https://formspree.io/f/your-id" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="message" placeholder="Message" rows="5" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
-</main>
+        <section id="achievements">
+            <h3><i class="fas fa-trophy"></i> Achievements</h3>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <i class="fas fa-bug"></i>
+                    <h4>Vulnerabilities</h4>
+                    <p>50+ Found</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Bug Bounty</h4>
+                    <p>Multiple Programs</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Open Source</h4>
+                    <p>Tools & Scripts</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Community</h4>
+                    <p>Research Sharing</p>
+                </div>
+            </div>
+        </section>
 
-<footer>© 2025 7R1X7R41L</footer>
+        <section id="projects">
+            <h3><i class="fas fa-code"></i> Projects</h3>
+            <div class="filters">
+                <input type="text" id="search" placeholder="🔍 Search repos...">
+                <select id="language">
+                    <option value="All">All Languages</option>
+                </select>
+                <select id="sort">
+                    <option value="updated">Recently Updated</option>
+                    <option value="stars">Most Stars</option>
+                </select>
+            </div>
+            <div id="repo-list"></div>
+        </section>
+
+        <section id="contact">
+            <h3><i class="fas fa-envelope"></i> Contact</h3>
+            <form>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/7R1X7R41L" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/prince-chakma" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:me.fatalops@proton.me" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p>© 2025 7R1X7R41L - Security Researcher</p>
+    </footer>
+</div>
 
 <!-- Modal -->
 <div id="modal">
-  <div class="content">
-    <span class="close">&times;</span>
-    <h3 id="modal-name"></h3>
-    <p id="modal-desc"></p>
-    <div class="meta">
-      <span id="modal-lang"></span>
-      <span id="modal-stars"></span>
-      <span id="modal-forks"></span>
+    <div class="content">
+        <span class="close">&times;</span>
+        <h3 id="modal-name"></h3>
+        <p id="modal-desc"></p>
+        <div class="meta">
+            <span id="modal-lang"></span>
+            <span id="modal-stars"></span>
+            <span id="modal-forks"></span>
+        </div>
+        <a id="modal-link" href="#" target="_blank" class="btn btn-primary">View on GitHub</a>
     </div>
-    <p id="modal-topics"></p>
-    <a id="modal-link" href="#" target="_blank">Open on GitHub</a>
-  </div>
 </div>
 
 <script>
-/* GitHub Repos */
+// Mobile Menu Toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const nav = document.querySelector('nav');
+
+mobileMenuBtn.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    mobileMenuBtn.innerHTML = nav.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+});
+
+// Close mobile menu when clicking on links
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+});
+
+// Counter Animation
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText;
+        const increment = target / 50;
+        
+        if(count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCounters, 20);
+        } else {
+            counter.innerText = target;
+        }
+    });
+}
+
+// GitHub Repos
 const repoListEl = document.getElementById('repo-list');
 const searchEl = document.getElementById('search');
 const languageEl = document.getElementById('language');
@@ -141,93 +931,106 @@ const sortEl = document.getElementById('sort');
 let repos = [];
 
 async function fetchRepos() {
-  try {
-    const res = await fetch('https://api.github.com/users/7R1X7R41L/repos?per_page=100');
-    repos = await res.json();
-    populateLanguages();
-    renderRepos();
-  } catch(e) { repoListEl.innerHTML = '<p>Error loading repos</p>'; }
+    try {
+        const res = await fetch('https://api.github.com/users/7R1X7R41L/repos?per_page=100');
+        repos = await res.json();
+        populateLanguages();
+        renderRepos();
+    } catch(e) { 
+        repoListEl.innerHTML = '<p style="text-align: center; padding: 20px; color: #ff6b6b;">Error loading repositories</p>'; 
+    }
 }
 
 function populateLanguages() {
-  const langs = new Set();
-  repos.forEach(r => { if(r.language) langs.add(r.language); });
-  langs.forEach(l => {
-    const opt = document.createElement('option');
-    opt.value = l; opt.textContent = l;
-    languageEl.appendChild(opt);
-  });
+    const langs = new Set();
+    repos.forEach(r => { if(r.language) langs.add(r.language); });
+    langs.forEach(l => {
+        const opt = document.createElement('option');
+        opt.value = l; opt.textContent = l;
+        languageEl.appendChild(opt);
+    });
 }
 
 function renderRepos() {
-  let filtered = repos.slice();
-  const q = searchEl.value.toLowerCase();
-  if(q) filtered = filtered.filter(r => (r.name + (r.description||'')).toLowerCase().includes(q));
-  const lang = languageEl.value;
-  if(lang !== 'All') filtered = filtered.filter(r => r.language === lang);
-  const sortBy = sortEl.value;
-  if(sortBy === 'stars') filtered.sort((a,b)=>b.stargazers_count-a.stargazers_count);
-  else filtered.sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at));
+    let filtered = repos.slice();
+    const q = searchEl.value.toLowerCase();
+    if(q) filtered = filtered.filter(r => (r.name + (r.description||'')).toLowerCase().includes(q));
+    const lang = languageEl.value;
+    if(lang !== 'All') filtered = filtered.filter(r => r.language === lang);
+    const sortBy = sortEl.value;
+    if(sortBy === 'stars') filtered.sort((a,b)=>b.stargazers_count-a.stargazers_count);
+    else filtered.sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at));
 
-  repoListEl.innerHTML = '';
-  if(filtered.length===0){ repoListEl.innerHTML='<p>No repos found</p>'; return; }
-  filtered.forEach(r=>{
-    const div=document.createElement('div'); div.className='repo';
-    div.innerHTML=`
-      <h4>${r.name} ★ ${r.stargazers_count}</h4>
-      <p>${r.description||'No description'}</p>
-      <div class="meta"><span>${r.language||'—'}</span><span>Updated: ${new Date(r.updated_at).toLocaleDateString()}</span></div>
-    `;
-    div.addEventListener('click',()=>showModal(r));
-    repoListEl.appendChild(div);
-  });
+    repoListEl.innerHTML = '';
+    if(filtered.length===0){ 
+        repoListEl.innerHTML='<p style="text-align: center; padding: 20px; color: #ffd93d;">No repositories found</p>'; 
+        return; 
+    }
+    
+    filtered.forEach(r=>{
+        const div=document.createElement('div'); 
+        div.className='repo';
+        div.innerHTML=`
+            <h4>${r.name} <span style="color: #00ff9d;">★ ${r.stargazers_count}</span></h4>
+            <p>${r.description||'No description'}</p>
+            <div class="meta">
+                <span>${r.language||'—'}</span>
+                <span>${new Date(r.updated_at).toLocaleDateString()}</span>
+            </div>
+        `;
+        div.addEventListener('click',()=>showModal(r));
+        repoListEl.appendChild(div);
+    });
 }
 
+// Modal functionality
+const modal = document.getElementById('modal');
+const closeBtn = document.querySelector('.close');
+
+function showModal(repo) {
+    document.getElementById('modal-name').textContent = repo.name;
+    document.getElementById('modal-desc').textContent = repo.description || 'No description';
+    document.getElementById('modal-lang').textContent = 'Language: ' + (repo.language || '—');
+    document.getElementById('modal-stars').textContent = 'Stars: ' + repo.stargazers_count;
+    document.getElementById('modal-forks').textContent = 'Forks: ' + repo.forks_count;
+    document.getElementById('modal-link').href = repo.html_url;
+    modal.style.display = 'flex';
+}
+
+closeBtn.onclick = () => modal.style.display = 'none';
+window.onclick = (e) => { if(e.target == modal) modal.style.display = 'none'; }
+
+// Event Listeners
 searchEl.addEventListener('input', renderRepos);
 languageEl.addEventListener('change', renderRepos);
 sortEl.addEventListener('change', renderRepos);
-fetchRepos();
 
-/* Modal */
-const modal=document.getElementById('modal');
-const modalName=document.getElementById('modal-name');
-const modalDesc=document.getElementById('modal-desc');
-const modalLang=document.getElementById('modal-lang');
-const modalStars=document.getElementById('modal-stars');
-const modalForks=document.getElementById('modal-forks');
-const modalTopics=document.getElementById('modal-topics');
-const modalLink=document.getElementById('modal-link');
-const closeBtn=document.querySelector('#modal .close');
-function showModal(repo){
-  modalName.textContent=repo.name;
-  modalDesc.textContent=repo.description||'No description';
-  modalLang.textContent='Language: '+(repo.language||'—');
-  modalStars.textContent='Stars: '+repo.stargazers_count;
-  modalForks.textContent='Forks: '+repo.forks_count;
-  modalTopics.textContent='Topics: '+(repo.topics?.join(', ')||'—');
-  modalLink.href=repo.html_url;
-  modal.style.display='flex';
-}
-closeBtn.onclick=()=>modal.style.display='none';
-window.onclick=e=>{ if(e.target==modal) modal.style.display='none'; }
+// Initialize
+window.addEventListener('load', () => {
+    animateCounters();
+    fetchRepos();
+});
 
-/* Particle Background */
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-let particles=[]; const particleCount=80;
-function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
-window.addEventListener('resize',resizeCanvas); resizeCanvas();
-function createParticles(){ particles=[]; for(let i=0;i<particleCount;i++){ particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*3+1,dx:(Math.random()-0.5)*1.5,dy:(Math.random()-0.5)*1.5}); } }
-createParticles();
-function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,0.7)'; ctx.fill(); p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>canvas.width)p.dx*=-1; if(p.y<0||p.y>canvas.height)p.dy*=-1; }); requestAnimationFrame(draw); }
-draw();
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
-/* Scroll animations */
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); }});
-},{ threshold:0.2 });
-sections.forEach(sec=>observer.observe(sec));
+// Form submission
+document.querySelector('#contact form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for your message! I will get back to you soon.');
+    this.reset();
+});
 </script>
 </body>
 </html>
